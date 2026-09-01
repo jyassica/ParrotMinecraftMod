@@ -66,7 +66,7 @@ public class ParrotMixin {
         UUID ownerUUID = null;
 
         if (parent.isTame()) {
-            UUID parentOwner = parent.m_21805_();
+            UUID parentOwner = parent.getOwnerUUID();
 
             if (parentOwner != null) {
                 ownerUUID = parentOwner;
@@ -75,7 +75,7 @@ public class ParrotMixin {
 
         if (ownerUUID != null) {
             baby.setTame(true, false);
-            baby.setOwnerReference(ownerUUID);
+            baby.setOwnerUUID(ownerUUID);
         }
 
         cir.setReturnValue(baby);

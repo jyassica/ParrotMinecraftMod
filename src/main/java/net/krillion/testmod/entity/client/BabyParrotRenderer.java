@@ -25,9 +25,4 @@ public class BabyParrotRenderer extends MobRenderer<BabyParrotEntity, BabyParrot
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
-
-    @Override
-    public ResourceLocation createRenderState(BabyParrotEntity pEntity) {
-        return getTextureLocation(pEntity);
-    }
 }

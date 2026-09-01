@@ -68,6 +68,9 @@ public class TestMod
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
             event.accept(TestBlocks.POOP_BLOCK);
+
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS)
+            event.accept(TestItems.BABYPARROT_SPAWN_EGG);
     }
 
     // You can use SubscribeEvent and let the Event Bus discover methods to call
