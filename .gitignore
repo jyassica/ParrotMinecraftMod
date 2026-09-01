@@ -1,0 +1,27 @@
+# Gradle
+.gradle/
+build/
+
+# Forge run directories
+run/
+runs/
+run-data/
+src/generated/
+
+# Logs
+*.log
+
+# IDE / editor
+.idea/
+*.iml
+*.ipr
+*.iws
+.settings/
+.classpath
+.project
+bin/
+eclipse/
+.vscode/
+
+# OS
+.DS_Store

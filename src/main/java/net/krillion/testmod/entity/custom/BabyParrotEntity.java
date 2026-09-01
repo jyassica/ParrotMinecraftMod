@@ -124,7 +124,7 @@ public class BabyParrotEntity extends TamableAnimal {
                 }
             }
 
-            return InteractionResult.m_19078_(this.level().isClientSide);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         } else if (!itemstack.is(ItemTags.PARROT_POISONOUS_FOOD)) { // if it is not poisonous food
             if (this.isTame() && this.isOwnedBy(pPlayer)) {
                 if (!this.level().isClientSide) {
@@ -132,7 +132,7 @@ public class BabyParrotEntity extends TamableAnimal {
                     this.setOrderedToSit(!this.isOrderedToSit());
                 }
 
-                return InteractionResult.m_19078_(this.level().isClientSide);
+                return InteractionResult.sidedSuccess(this.level().isClientSide);
             } else {
                 return super.mobInteract(pPlayer, pHand);
             }
@@ -143,7 +143,7 @@ public class BabyParrotEntity extends TamableAnimal {
                 this.hurt(this.damageSources().playerAttack(pPlayer), Float.MAX_VALUE);
             }
 
-            return InteractionResult.m_19078_(this.level().isClientSide);
+            return InteractionResult.sidedSuccess(this.level().isClientSide);
         }
     }
 
@@ -227,12 +227,10 @@ public class BabyParrotEntity extends TamableAnimal {
         }
 
         // where it at
-        adult.m_264318_(
-                pLevel,
+        adult.moveTo(
                 this.getX(),
                 this.getY(),
                 this.getZ(),
-                null,
                 this.getYRot(),
                 this.getXRot()
         );
@@ -243,7 +241,7 @@ public class BabyParrotEntity extends TamableAnimal {
         // if its tamed or not
         if (this.isTame()) {
             adult.setTame(true, false);
-            adult.setOwnerReference(this.m_21805_());
+            adult.setOwnerUUID(this.getOwnerUUID());
         }
         // sitting?
         adult.setOrderedToSit(this.isOrderedToSit());

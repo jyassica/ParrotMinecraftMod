@@ -91,9 +91,9 @@ public class BabyParrotModel<T extends Entity> extends HierarchicalModel<T> {
 		this.babyParrot.getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-		this.m_267799_(ModAnimationDefinitions.BABYPARROT_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.m_233385_(((BabyParrotEntity) entity).idleAnimationState, ModAnimationDefinitions.BABYPARROT_IDLE, ageInTicks, 1f);
-		this.m_233385_(((BabyParrotEntity) entity).sitAnimationState, ModAnimationDefinitions.BABYPARROT_SIT, ageInTicks, 1f);
+		this.animateWalk(ModAnimationDefinitions.BABYPARROT_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animate(((BabyParrotEntity) entity).idleAnimationState, ModAnimationDefinitions.BABYPARROT_IDLE, ageInTicks, 1f);
+		this.animate(((BabyParrotEntity) entity).sitAnimationState, ModAnimationDefinitions.BABYPARROT_SIT, ageInTicks, 1f);
 	}
 
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
@@ -112,7 +112,7 @@ public class BabyParrotModel<T extends Entity> extends HierarchicalModel<T> {
 
 
 	@Override
-	public ModelPart m_142109_() {
+	public ModelPart root() {
 		return babyParrot;
 	}
 }

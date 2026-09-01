@@ -69,7 +69,7 @@ public class ParrotBreedingEvents {
                 stack.shrink(1);
             }
         }
-        event.setCancellationResult(InteractionResult.m_19078_(parrot.level().isClientSide));
+        event.setCancellationResult(InteractionResult.sidedSuccess(parrot.level().isClientSide));
         event.setCanceled(true);
     }
 }
