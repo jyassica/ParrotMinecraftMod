@@ -26,14 +26,20 @@ public class ParrotBreedingEvents {
             return;
         }
 
+        if (event.getLevel().isClientSide()) {
+            return;
+        }
+
         Parrot parrot = (Parrot) event.getEntity();
 
         parrot.goalSelector.addGoal(0, new BreedGoal(parrot, 1.0D));
-        parrot.goalSelector.addGoal(3,
+        // TemptGoal must out-rank the parrot's own priority-2 ParrotWanderGoal /
+        // FollowOwnerGoal, otherwise those keep the MOVE flag and the parrot never
+        // follows the seeds. Lower number = higher priority, so use 1 (above 2).
+        parrot.goalSelector.addGoal(1,
                 new TemptGoal(parrot, 1.2D, Ingredient.of(
                         Items.WHEAT_SEEDS, Items.BEETROOT_SEEDS, Items.MELON_SEEDS, Items.PUMPKIN_SEEDS, Items.TORCHFLOWER_SEEDS
                 ), false));
-
     }
 
     @SubscribeEvent
