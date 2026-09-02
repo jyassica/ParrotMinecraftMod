@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 public class ParrotBreedingEvents {
 
     public static final Logger LOGGER = LogUtils.getLogger();
+    public static final int cooldownTicks = 30 * 20;  // 30 is the number of seconds, set it to whatever you want
 
     @SubscribeEvent
     public static void onParrotSpawn(EntityJoinLevelEvent event) {
@@ -67,8 +68,7 @@ public class ParrotBreedingEvents {
             return;
         }
 
-
-        if (!parrot.level().isClientSide) {
+        if (!parrot.level().isClientSide && !(parrot.getAge() > 6000 - cooldownTicks)) {
             parrot.setInLove(player);
 
             if (!player.getAbilities().instabuild) {
